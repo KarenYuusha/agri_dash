@@ -1,0 +1,14 @@
+[project]
+name = "agri-dash"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.4.2",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.0",
+    "plotly>=6.5.2",
+    "seaborn>=0.13.2",
+    "streamlit>=1.19.0",
+]
