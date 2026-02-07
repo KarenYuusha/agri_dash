@@ -4,9 +4,14 @@ import pandas as pd
 import numpy as np
 
 # normalize unit
+
+
 @st.cache_data
-def load_data():
-    df = pd.read_csv('./data/luong_thuc.csv')
+def load_data(uploaded_file=None):
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+    else:
+        df = pd.read_csv('./data/luong_thuc.csv')
 
     df['unit'] = (
         df['unit']
@@ -59,13 +64,22 @@ def load_data():
 
     return df
 
-def show():
-    df = load_data()
 
+def show():
     st.title('🌾 Agriculture Yearly Report')
     st.markdown("Analysis of agricultural production, area, and trade values.")
 
     st.sidebar.header("Agriculture Filters")
+
+    uploaded_csv = st.sidebar.file_uploader(
+        "Upload CSV data",
+        type=["csv"]
+    )
+
+    if uploaded_csv is not None:
+        st.sidebar.success(f"Using uploaded file: {uploaded_csv.name}")
+
+    df = load_data(uploaded_csv)
 
     geo_levels = sorted(df['geo_level'].dropna().unique())
     selected_geo = st.sidebar.selectbox("Geographic Level", geo_levels)
@@ -183,95 +197,3 @@ def show():
     )
 
     st.plotly_chart(fig1, use_container_width=True)
-
-    col_charts_1, col_charts_2 = st.columns(2)
-
-    with col_charts_1:
-        st.subheader("Commodity Share")
-
-        commodity_data = filtered_df[filtered_df['commodity'].notna()]
-
-        if not commodity_data.empty:
-            top_comm = (
-                commodity_data
-                .groupby('commodity')['normalized_value']
-                .sum()
-                .nlargest(10)
-            )
-
-            fig2 = px.pie(
-                values=top_comm.values,
-                names=top_comm.index,
-                title='Top 10 Commodities',
-                hole=0.4
-            )
-            st.plotly_chart(fig2, use_container_width=True)
-        else:
-            st.info("No commodity data available.")
-
-    with col_charts_2:
-        st.subheader("Regional Leaders")
-
-        regional = filtered_df[
-            (filtered_df['location_name'].notna()) &
-            (filtered_df['location_name'] != 'cả nước')
-        ]
-
-        if not regional.empty:
-            top_regions = (
-                regional
-                .groupby('location_name')['normalized_value']
-                .sum()
-                .nlargest(10)
-                .sort_values()
-            )
-
-            fig3 = px.bar(
-                x=top_regions.values,
-                y=top_regions.index,
-                orientation='h',
-                title='Top 10 Locations'
-            )
-
-            fig3.update_traces(marker_color='#2ecc71')
-            st.plotly_chart(fig3, use_container_width=True)
-        else:
-            st.info("No regional data available.")
-
-    st.subheader("Seasonality")
-
-    seasonal = (
-        filtered_df
-        .groupby(['month', 'attribute'])['normalized_value']
-        .sum()
-        .reset_index()
-    )
-
-    fig4 = px.bar(
-        seasonal,
-        x='month',
-        y='normalized_value',
-        color='attribute',
-        title='Seasonal Pattern',
-        barmode='group'
-    )
-
-    fig4.update_xaxes(
-        tickmode='array',
-        tickvals=list(range(1, 13)),
-        ticktext=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    )
-
-    st.plotly_chart(fig4, use_container_width=True)
-
-    with st.expander("📋 View Raw Data"):
-        st.dataframe(
-            filtered_df[
-                [
-                    'year', 'month', 'attribute', 'commodity',
-                    'location_name', 'value', 'unit', 'normalized_value'
-                ]
-            ].head(100),
-            use_container_width=True
-        )
