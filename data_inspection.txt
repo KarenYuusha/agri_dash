@@ -1,0 +1,118 @@
+
+--- data/luong_thuc.csv ---
+Columns: ['record_id', 'year', 'month', 'report_date', 'period_type', 'geo_level', 'location_name', 'region_id', 'region_name_vn', 'sector', 'commodity', 'sub_item', 'attribute', 'value', 'unit', 'data_type', 'source_file', 'appendix_number', 'appendix_title', 'row_number', 'extraction_confidence', 'notes', 'is_aggregated', 'data_status']
+Head:
+                              record_id  year  month report_date period_type   geo_level location_name region_id region_name_vn       sector                  commodity   sub_item     attribute   value     unit data_type                           source_file appendix_number                         appendix_title  row_number  extraction_confidence                                                    notes  is_aggregated data_status
+0  56d69cc1-e879-402d-b46e-b3fbb304ef7c  2008      2  2008-02-15    Seasonal  Provincial       cả nước       NaN            NaN  Cultivation                        lúa  Đông Xuân  Area_Planted  2180.5  1000_ha    Actual  2009_02_PHULUC_t02_2009_FINAL_PL1.md             PL1  TỔNG HỢP KẾT QUẢ SẢN XUẤT NÔNG NGHIỆP           2                    0.9         Original text: 1. Gieo cấy lúa đông xuân cả nước          False    Complete
+1  46f2915b-bef9-4919-abe2-b8a586e786a3  2008      2  2008-02-15     Monthly    National       cả nước       NaN            NaN  Cultivation  cây công nghiệp ngắn ngày        NaN  Area_Planted   180.3  1000_ha    Actual  2009_02_PHULUC_t02_2009_FINAL_PL1.md             PL1  TỔNG HỢP KẾT QUẢ SẢN XUẤT NÔNG NGHIỆP          14                    0.9  Original text: 4. Gieo trồng cây công nghiệp ngắn ngày(           True    Complete
+2  a70f5b83-53ab-45fb-8644-b67b0a514f84  2008      2  2008-02-15     Monthly    National       cả nước       NaN            NaN  Cultivation                 khoai lang        NaN  Area_Planted    79.5  1000_ha    Actual  2009_02_PHULUC_t02_2009_FINAL_PL1.md             PL1  TỔNG HỢP KẾT QUẢ SẢN XUẤT NÔNG NGHIỆP          12                    0.9                              Original text: - Khoai lang           True    Complete
+3  6131f14c-f2d2-4275-a01c-548eff395328  2008      2  2008-02-15     Monthly    National       cả nước       NaN            NaN  Cultivation                        lạc        NaN  Area_Planted    79.7  1000_ha    Actual  2009_02_PHULUC_t02_2009_FINAL_PL1.md             PL1  TỔNG HỢP KẾT QUẢ SẢN XUẤT NÔNG NGHIỆP          16                    0.9                                     Original text: - Lạc           True    Complete
+4  a340b981-1379-4423-b356-1191da6e4cf7  2008      2  2008-02-15     Monthly    National       cả nước       NaN            NaN  Cultivation                        NaN        NaN  Area_Planted   398.0  1000_ha    Actual  2009_02_PHULUC_t02_2009_FINAL_PL1.md             PL1  TỔNG HỢP KẾT QUẢ SẢN XUẤT NÔNG NGHIỆP          10                    0.9            Original text: 3. Gieo trồng màu lương thực()           True    Complete
+dtypes:
+record_id                    str
+year                       int64
+month                      int64
+report_date                  str
+period_type                  str
+geo_level                    str
+location_name                str
+region_id                    str
+region_name_vn               str
+sector                       str
+commodity                    str
+sub_item                     str
+attribute                    str
+value                    float64
+unit                         str
+data_type                    str
+source_file                  str
+appendix_number              str
+appendix_title               str
+row_number                 int64
+extraction_confidence    float64
+notes                        str
+is_aggregated               bool
+data_status                  str
+dtype: object
+
+--- data/nasa_power_daily.csv ---
+Columns: ['Province', 'Latitude', 'Longitude', 'Date', 'T2M', 'RH2M', 'T2M_MAX', 'T2M_MIN', 'CLOUD_AMT', 'PRECTOTCORR', 'GWETPROF', 'CLRSKY_SFC_SW_DWN']
+Head:
+  Province  Latitude  Longitude      Date    T2M   RH2M  T2M_MAX  T2M_MIN  CLOUD_AMT  PRECTOTCORR  GWETPROF  CLRSKY_SFC_SW_DWN
+0   Hà Nội   21.0285   105.8542  20080101  10.25  56.52    17.08     4.25      36.21          0.0      0.64              17.08
+1   Hà Nội   21.0285   105.8542  20080102  11.11  51.51    17.87     3.36       4.49          0.0      0.64              17.25
+2   Hà Nội   21.0285   105.8542  20080103  12.10  58.27    18.92     4.40       9.27          0.0      0.64              16.59
+3   Hà Nội   21.0285   105.8542  20080104  13.67  69.99    20.64     6.72       1.62          0.0      0.64              16.22
+4   Hà Nội   21.0285   105.8542  20080105  14.95  78.91    21.37     8.94      86.51          0.0      0.63              14.32
+dtypes:
+Province                 str
+Latitude             float64
+Longitude            float64
+Date                   int64
+T2M                  float64
+RH2M                 float64
+T2M_MAX              float64
+T2M_MIN              float64
+CLOUD_AMT            float64
+PRECTOTCORR          float64
+GWETPROF             float64
+CLRSKY_SFC_SW_DWN    float64
+dtype: object
+
+--- data/disaster-in-vietnam_1900-to-2024.xlsx ---
+Columns: ['DisNo.', 'Historic', 'Classification Key', 'Disaster Group', 'Disaster Subgroup', 'Disaster Type', 'Disaster Subtype', 'External IDs', 'Event Name', 'ISO', 'Country', 'Subregion', 'Region', 'Location', 'Origin', 'Associated Types', 'OFDA Response', 'Appeal', 'Declaration', "AID Contribution ('000 US$)", 'Magnitude', 'Magnitude Scale', 'Latitude', 'Longitude', 'River Basin', 'Start Year', 'Start Month', 'Start Day', 'End Year', 'End Month', 'End Day', 'Total Deaths', 'No. Injured', 'No. Affected', 'No. Homeless', 'Total Affected', "Reconstruction Costs ('000 US$)", "Reconstruction Costs, Adjusted ('000 US$)", "Insured Damage ('000 US$)", "Insured Damage, Adjusted ('000 US$)", "Total Damage ('000 US$)", "Total Damage, Adjusted ('000 US$)", 'CPI', 'Admin Units', 'Entry Date', 'Last Update']
+Head:
+          DisNo. Historic Classification Key Disaster Group Disaster Subgroup Disaster Type   Disaster Subtype External IDs Event Name  ISO   Country           Subregion Region              Location Origin Associated Types OFDA Response Appeal Declaration  AID Contribution ('000 US$)  Magnitude Magnitude Scale  Latitude  Longitude River Basin  Start Year  Start Month  Start Day  End Year  End Month  End Day  Total Deaths  No. Injured  No. Affected  No. Homeless  Total Affected  Reconstruction Costs ('000 US$)  Reconstruction Costs, Adjusted ('000 US$)  Insured Damage ('000 US$)  Insured Damage, Adjusted ('000 US$)  Total Damage ('000 US$)  Total Damage, Adjusted ('000 US$)        CPI Admin Units  Entry Date Last Update
+0  1953-0019-VNM      Yes    nat-met-sto-tro        Natural    Meteorological         Storm   Tropical cyclone          NaN        NaN  VNM  Viet Nam  South-eastern Asia   Asia        Southern coast    NaN              NaN            No     No          No                          NaN        NaN             Kph       NaN        NaN         NaN        1953          9.0       26.0      1953        9.0     26.0        1000.0          NaN           NaN           NaN             NaN                              NaN                                        NaN                        NaN                                  NaN                      NaN                                NaN   9.156133         NaN  2006-09-17  2023-09-25
+1  1956-0050-VNM      Yes    nat-met-sto-tro        Natural    Meteorological         Storm   Tropical cyclone          NaN        NaN  VNM  Viet Nam  South-eastern Asia   Asia                   NaN    NaN              NaN            No     No          No                          NaN        NaN             Kph       NaN        NaN         NaN        1956         11.0        NaN      1956       11.0      NaN          56.0          NaN           NaN           NaN             NaN                              NaN                                        NaN                        NaN                                  NaN                      NaN                                NaN   9.288532         NaN  2003-07-01  2023-09-25
+2  1964-0004-VNM      Yes    nat-bio-epi-bac        Natural        Biological      Epidemic  Bacterial disease          NaN    Cholera  VNM  Viet Nam  South-eastern Asia   Asia  Saigon, Mekong delta    NaN              NaN           Yes     No          No                          NaN        NaN             NaN       NaN        NaN         NaN        1964          1.0        1.0      1964        1.0      1.0         598.0          NaN       10848.0           NaN         10848.0                              NaN                                        NaN                        NaN                                  NaN                      NaN                                NaN  10.598376         NaN  2003-07-01  2023-09-25
+3  1964-0063-VNM      Yes    nat-met-sto-tro        Natural    Meteorological         Storm   Tropical cyclone          NaN      Iris   VNM  Viet Nam  South-eastern Asia   Asia       China sea coast    NaN              NaN           Yes     No          No                          NaN        NaN             Kph       NaN        NaN         NaN        1964          9.0        NaN      1964       11.0      NaN        7000.0          NaN      700000.0           NaN        700000.0                              NaN                                        NaN                        NaN                                  NaN                  50000.0                           471770.0  10.598376         NaN  2006-09-17  2023-09-25
+4  1964-0102-VNM      Yes    nat-hyd-flo-flo        Natural      Hydrological         Flood    Flood (General)          NaN        NaN  VNM  Viet Nam  South-eastern Asia   Asia                   NaN    NaN              NaN            No     No          No                          NaN        NaN             Km2       NaN        NaN         NaN        1964         12.0        NaN      1964       12.0      NaN         400.0          NaN           NaN           NaN             NaN                              NaN                                        NaN                        NaN                                  NaN                      NaN                                NaN  10.598376         NaN  2003-07-01  2023-09-25
+dtypes:
+DisNo.                                           str
+Historic                                         str
+Classification Key                               str
+Disaster Group                                   str
+Disaster Subgroup                                str
+Disaster Type                                    str
+Disaster Subtype                                 str
+External IDs                                     str
+Event Name                                       str
+ISO                                              str
+Country                                          str
+Subregion                                        str
+Region                                           str
+Location                                         str
+Origin                                           str
+Associated Types                                 str
+OFDA Response                                    str
+Appeal                                           str
+Declaration                                      str
+AID Contribution ('000 US$)                  float64
+Magnitude                                    float64
+Magnitude Scale                                  str
+Latitude                                     float64
+Longitude                                    float64
+River Basin                                      str
+Start Year                                     int64
+Start Month                                  float64
+Start Day                                    float64
+End Year                                       int64
+End Month                                    float64
+End Day                                      float64
+Total Deaths                                 float64
+No. Injured                                  float64
+No. Affected                                 float64
+No. Homeless                                 float64
+Total Affected                               float64
+Reconstruction Costs ('000 US$)              float64
+Reconstruction Costs, Adjusted ('000 US$)    float64
+Insured Damage ('000 US$)                    float64
+Insured Damage, Adjusted ('000 US$)          float64
+Total Damage ('000 US$)                      float64
+Total Damage, Adjusted ('000 US$)            float64
+CPI                                          float64
+Admin Units                                      str
+Entry Date                                       str
+Last Update                                      str
+dtype: object

@@ -3,6 +3,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
+<< << << < HEAD
 # =========================
 # Schema definition
 # =========================
@@ -16,6 +17,19 @@ REQUIRED_COLUMNS = {
     'value',
     'unit'
 }
+== == == =
+# normalize unit
+
+
+@st.cache_data
+def load_data(uploaded_file=None):
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+    else:
+        df = pd.read_csv('./data/luong_thuc.csv')
+
+
+>>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
 
 # =========================
 # Data loading & validation
@@ -89,9 +103,16 @@ def load_data(uploaded_file=None):
 
     return df
 
+
+<< << << < HEAD
 # =========================
 # Main app
 # =========================
+
+
+== == == =
+
+>>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
 
 
 def show():
@@ -100,21 +121,32 @@ def show():
 
     st.sidebar.header("Agriculture Filters")
 
-    # ---- CSV upload ----
-    uploaded_csv = st.sidebar.file_uploader(
+
+<< << << < HEAD
+   # ---- CSV upload ----
+== == == =
+>>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
+   uploaded_csv = st.sidebar.file_uploader(
         "Upload CSV data",
         type=["csv"]
     )
 
-    try:
+<< << << < HEAD
+   try:
         df = load_data(uploaded_csv)
         if uploaded_csv is not None:
             st.sidebar.success(f"Using uploaded file: {uploaded_csv.name}")
     except Exception as e:
         st.error(f"❌ Data validation error: {e}")
         st.stop()
+== =====
+   if uploaded_csv is not None:
+        st.sidebar.success(f"Using uploaded file: {uploaded_csv.name}")
 
-    geo_levels = sorted(df['geo_level'].dropna().unique())
+    df = load_data(uploaded_csv)
+>>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
+
+   geo_levels = sorted(df['geo_level'].dropna().unique())
     selected_geo = st.sidebar.selectbox("Geographic Level", geo_levels)
 
     df_geo = df[df['geo_level'] == selected_geo]
@@ -226,7 +258,8 @@ def show():
         )
     )
 
-    st.plotly_chart(fig1, width='stretch')
+<<<<<< < HEAD
+   st.plotly_chart(fig1, width='stretch')
 
     col1, col2 = st.columns(2)
 
@@ -310,3 +343,6 @@ def show():
             ].head(100),
             width='stretch'
         )
+== =====
+   st.plotly_chart(fig1, width='stretch')
+>>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
