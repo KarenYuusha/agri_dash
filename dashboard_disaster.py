@@ -62,7 +62,7 @@ def show():
     fig1 = px.bar(yearly_counts, x='Start Year', y='Count',
                   title='Number of Disasters per Year')
     fig1.update_traces(marker_color='#e74c3c')
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, width='stretch')
 
     col_charts_1, col_charts_2 = st.columns(2)
 
@@ -72,7 +72,7 @@ def show():
         type_counts = filtered_df['Disaster Type'].value_counts()
         fig2 = px.pie(values=type_counts.values, names=type_counts.index,
                       title='Distribution by Type', hole=0.4)
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width='stretch')
 
     with col_charts_2:
         # 3. Impact (Deaths)
@@ -87,7 +87,7 @@ def show():
         fig3 = px.bar(deadliest, x='Total Deaths', y='Event Name', orientation='h',
                       title='Top 10 Deadliest Events')
         fig3.update_layout(yaxis={'categoryorder': 'total ascending'})
-        st.plotly_chart(fig3, use_container_width=True)
+        st.plotly_chart(fig3, width='stretch')
 
     # 4. Map
     st.subheader("Disaster Locations")

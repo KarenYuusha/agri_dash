@@ -75,7 +75,7 @@ def show():
                                   name='Avg Temp', line=dict(color='#2ecc71', width=2)))
     fig_temp.update_layout(
         title='Daily Temperature Range', hovermode='x unified')
-    st.plotly_chart(fig_temp, use_container_width=True)
+    st.plotly_chart(fig_temp, width='stretch')
 
     # 2. Rainfall and Humidity
     st.subheader("Rainfall & Humidity")
@@ -96,7 +96,7 @@ def show():
         yaxis2=dict(title='Humidity (%)', overlaying='y', side='right'),
         hovermode='x unified'
     )
-    st.plotly_chart(fig_rh, use_container_width=True)
+    st.plotly_chart(fig_rh, width='stretch')
 
     # 3. Correlation Heatmap
     st.subheader("Weather Correlation")
@@ -104,7 +104,7 @@ def show():
     corr = filtered_df[cols_corr].corr()
     fig_corr = px.imshow(corr, text_auto=True, color_continuous_scale='RdBu_r',
                          title='Correlation Matrix')
-    st.plotly_chart(fig_corr, use_container_width=True)
+    st.plotly_chart(fig_corr, width='stretch')
 
     # 4. Station Map
     st.subheader("Station Location")
