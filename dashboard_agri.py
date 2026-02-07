@@ -3,7 +3,6 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-<< << << < HEAD
 # =========================
 # Schema definition
 # =========================
@@ -17,19 +16,6 @@ REQUIRED_COLUMNS = {
     'value',
     'unit'
 }
-== == == =
-# normalize unit
-
-
-@st.cache_data
-def load_data(uploaded_file=None):
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-    else:
-        df = pd.read_csv('./data/luong_thuc.csv')
-
-
->>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
 
 # =========================
 # Data loading & validation
@@ -103,16 +89,9 @@ def load_data(uploaded_file=None):
 
     return df
 
-
-<< << << < HEAD
 # =========================
 # Main app
 # =========================
-
-
-== == == =
-
->>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
 
 
 def show():
@@ -121,32 +100,21 @@ def show():
 
     st.sidebar.header("Agriculture Filters")
 
-
-<< << << < HEAD
-   # ---- CSV upload ----
-== == == =
->>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
-   uploaded_csv = st.sidebar.file_uploader(
+    # ---- CSV upload ----
+    uploaded_csv = st.sidebar.file_uploader(
         "Upload CSV data",
         type=["csv"]
     )
 
-<< << << < HEAD
-   try:
+    try:
         df = load_data(uploaded_csv)
         if uploaded_csv is not None:
             st.sidebar.success(f"Using uploaded file: {uploaded_csv.name}")
     except Exception as e:
         st.error(f"❌ Data validation error: {e}")
         st.stop()
-== =====
-   if uploaded_csv is not None:
-        st.sidebar.success(f"Using uploaded file: {uploaded_csv.name}")
 
-    df = load_data(uploaded_csv)
->>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
-
-   geo_levels = sorted(df['geo_level'].dropna().unique())
+    geo_levels = sorted(df['geo_level'].dropna().unique())
     selected_geo = st.sidebar.selectbox("Geographic Level", geo_levels)
 
     df_geo = df[df['geo_level'] == selected_geo]
@@ -258,8 +226,7 @@ def show():
         )
     )
 
-<<<<<< < HEAD
-   st.plotly_chart(fig1, width='stretch')
+    st.plotly_chart(fig1, use_container_width=True)
 
     col1, col2 = st.columns(2)
 
@@ -280,7 +247,7 @@ def show():
                     title='Top 10 Commodities',
                     hole=0.4
                 ),
-                width='stretch'
+                use_container_width=True
             )
 
     with col2:
@@ -304,7 +271,7 @@ def show():
                     orientation='h',
                     title='Top 10 Locations'
                 ),
-                width='stretch'
+                use_container_width=True
             )
 
     st.subheader("Seasonality")
@@ -331,7 +298,7 @@ def show():
                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     )
 
-    st.plotly_chart(fig4, width='stretch')
+    st.plotly_chart(fig4, use_container_width=True)
 
     with st.expander("📋 View Raw Data"):
         st.dataframe(
@@ -341,8 +308,5 @@ def show():
                     'location_name', 'value', 'unit', 'normalized_value'
                 ]
             ].head(100),
-            width='stretch'
+            use_container_width=True
         )
-== =====
-   st.plotly_chart(fig1, width='stretch')
->>>>>> > 06760bb69aa2024e97a12225cbfbde9200d10fd8
