@@ -62,8 +62,6 @@ def show():
 
     st.divider()
 
-    # Charts
-
     # 1. Temperature Timeline
     st.subheader("Temperature Trends")
     fig_temp = go.Figure()

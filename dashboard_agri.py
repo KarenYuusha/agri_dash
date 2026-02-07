@@ -3,9 +3,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-# =========================
-# Schema definition
-# =========================
+
 REQUIRED_COLUMNS = {
     'year',
     'month',
@@ -17,10 +15,6 @@ REQUIRED_COLUMNS = {
     'unit'
 }
 
-# =========================
-# Data loading & validation
-# =========================
-
 
 @st.cache_data
 def load_data(uploaded_file=None):
@@ -29,14 +23,14 @@ def load_data(uploaded_file=None):
     else:
         df = pd.read_csv('./data/luong_thuc.csv')
 
-    # ---- schema validation ----
+    # schema validation
     missing_cols = REQUIRED_COLUMNS - set(df.columns)
     if missing_cols:
         raise ValueError(
             f"Missing required columns: {', '.join(sorted(missing_cols))}"
         )
 
-    # ---- normalize unit ----
+    # unit normalize
     df['unit'] = (
         df['unit']
         .astype(str)
@@ -89,10 +83,6 @@ def load_data(uploaded_file=None):
 
     return df
 
-# =========================
-# Main app
-# =========================
-
 
 def show():
     st.title('🌾 Agriculture Yearly Report')
@@ -100,7 +90,6 @@ def show():
 
     st.sidebar.header("Agriculture Filters")
 
-    # ---- CSV upload ----
     uploaded_csv = st.sidebar.file_uploader(
         "Upload CSV data",
         type=["csv"]
@@ -130,7 +119,7 @@ def show():
         st.warning("Please select at least one attribute.")
         return
 
-    # ---- unit consistency check ----
+    # unit consistency check
     unit_categories = (
         df_geo[df_geo['attribute'].isin(selected_attrs)]
         ['unit_category']
@@ -144,7 +133,7 @@ def show():
         )
         return
 
-    # ---- commodity filter ----
+    # commodity filter
     commodities = sorted(
         df_geo[df_geo['attribute'].isin(selected_attrs)]
         ['commodity']

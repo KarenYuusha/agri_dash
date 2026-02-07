@@ -17,7 +17,6 @@ def show():
     st.title('🌪️ Vietnam Disaster History (1900-2024)')
     st.markdown("Historical overview of natural disasters in Vietnam.")
 
-    # Sidebar Filters
     st.sidebar.header('Disaster Filters')
 
     min_year = int(df['Start Year'].min())
@@ -51,8 +50,6 @@ def show():
         st.metric("Total Damage (Est.)", f"${damage:,.0f} k")
 
     st.divider()
-
-    # Visualizations
 
     # 1. Timeline
     st.subheader(
