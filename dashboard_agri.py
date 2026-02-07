@@ -226,7 +226,7 @@ def show():
         )
     )
 
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, width='stretch')
 
     col1, col2 = st.columns(2)
 
@@ -247,7 +247,7 @@ def show():
                     title='Top 10 Commodities',
                     hole=0.4
                 ),
-                use_container_width=True
+                width='stretch'
             )
 
     with col2:
@@ -271,7 +271,7 @@ def show():
                     orientation='h',
                     title='Top 10 Locations'
                 ),
-                use_container_width=True
+                width='stretch'
             )
 
     st.subheader("Seasonality")
@@ -298,7 +298,7 @@ def show():
                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     )
 
-    st.plotly_chart(fig4, use_container_width=True)
+    st.plotly_chart(fig4, width='stretch')
 
     with st.expander("📋 View Raw Data"):
         st.dataframe(
@@ -308,5 +308,5 @@ def show():
                     'location_name', 'value', 'unit', 'normalized_value'
                 ]
             ].head(100),
-            use_container_width=True
+            width='stretch'
         )
