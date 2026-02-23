@@ -142,7 +142,7 @@ def load_data(uploaded_file=None):
 
 def show():
     st.title("🌾 Agriculture Yearly Report")
-    st.markdown("Dimension-safe agricultural analytics dashboard")
+    st.markdown("Agricultural analytics dashboard")
 
     st.sidebar.header("Filters")
 
