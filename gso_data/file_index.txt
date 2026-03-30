@@ -1,0 +1,40 @@
+1. Số trang trại phân theo địa phương
+2. Số trang trại phân theo lĩnh vực hoạt động và phân theo địa phương
+3. Giá trị sản phẩm thu được trên 1 hécta đất trồng trọt và mặt nước nuôi trồng thủy sản
+4. Diện tích các loại cây trồng phân theo nhóm cây
+5. Diện tích gieo trồng một số cây hàng năm
+6. Năng suất một số cây hàng năm
+7. Sản lượng một số cây hàng năm
+8. Diện tích gieo trồng và sản lượng lương thực có hạt
+9. Diện tích gieo trồng cây lương thực có hạt phân theo địa phương
+10. Sản lượng lương thực có hạt phân theo địa phương
+11. Sản lượng lương thực có hạt bình quân đầu người phân theo địa phương
+12. Diện tích gieo trồng và sản lượng lúa cả năm
+13. Diện tích lúa cả năm phân theo địa phương
+14. Năng suất gieo trồng lúa cả năm phân theo địa phương
+15. Sản lượng lúa cả năm phân theo địa phương
+16. Diện tích gieo trồng lúa đông xuân phân theo địa phương
+17. Năng suất gieo trồng lúa đông xuân phân theo địa phương
+18. Sản lượng lúa đông xuân phân theo địa phương
+19. Diện tích gieo trồng lúa hè thu và thu đông phân theo địa phương
+20. Năng suất gieo trồng lúa hè thu và thu đông phân theo địa phương
+21. Sản lượng lúa hè thu và thu đông phân theo địa phương
+22. Diện tích gieo trồng lúa mùa phân theo địa phương
+23. Năng suất gieo trồng lúa mùa phân theo địa phương
+24. Sản lượng lúa mùa phân theo địa phương
+25. Diện tích gieo trồng ngô phân theo địa phương
+26. Năng suất ngô phân theo địa phương
+27. Sản lượng ngô phân theo địa phương
+28. Diện tích gieo trồng khoai lang phân theo địa phương
+29. Sản lượng khoai lang phân theo địa phương
+30. Diện tích gieo trồng sắn phân theo địa phương
+31. Sản lượng sắn phân theo địa phương
+32. Diện tích gieo trồng mía phân theo địa phương
+33. Sản lượng mía phân theo địa phương
+34. Diện tích gieo trồng lạc phân theo địa phương
+35. Sản lượng lạc phân theo địa phương
+36. Diện tích hiện có một số cây lâu năm chủ yếu
+37. Diện tích cho sản phẩm một số cây lâu năm chủ yếu
+38. Sản lượng một số cây lâu năm chủ yếu
+39. Sản lượng chè búp phân theo địa phương
+40. Sản lượng cam phân theo địa phương

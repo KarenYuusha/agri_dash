@@ -1,0 +1,23 @@
+﻿Column,Meaning,Scientific Unit,Typical Range in Vietnam
+province_name,Name of the province,Text,N/A
+soil_ph,Soil acidity/alkalinity,pH scale (0-14),4.0 (Acid sulfate) to 7.5 (Coastal)
+soil_soc,Soil Organic Carbon,g/kg,10–50 g/kg (Higher = more fertile)
+soil_clay,Clay content,% (weight),20–60% (High in Mekong Delta)
+soil_sand,Sand content,% (weight),10–80% (High in Central Coast)
+elevation,Height above sea level,Meters (m),2m (Delta) to 3000m (Northwest)
+ndvi_mean,"Vegetation ""Greenness""",Index (-1 to 1),0.3 (Sparse) to 0.8 (Dense Forest/Crop)
+landcover,Primary land use type,Category Code,See Legend below
+
+10: Trees (Forests)
+
+20: Shrubland
+
+30: Grassland
+
+40: Cropland (Paddy rice, maize, etc.)
+
+50: Built-up (Cities/Roads)
+
+80: Permanent water bodies
+
+90: Herbaceous wetland (Mangroves/Swamps)
