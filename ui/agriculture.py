@@ -44,34 +44,56 @@ def show_agriculture_page():
 
         # 1. Metrics Row
         st.markdown("---")
-        m_df = df[(df['Province'] == s_reg) & (
-            df['Year'] == s_yr) & (df['Commodity'] == s_comm)]
+        m_df = df[
+            (df['Province'] == s_reg) &
+            (df['Year'] == s_yr) &
+            (df['Commodity'] == s_comm) &
+            (df['Level'] == s_lev_val)
+        ]
 
-        def get_m(attr): return m_df[m_df['Attribute'].str.contains(
-            attr, case=False, na=False)]['Value'].sum()
+        def get_m(attr):
+            return m_df[m_df['Attribute'].str.contains(attr, case=False, na=False)]['Value'].sum()
 
         col_m1, col_m2, col_m3 = st.columns(3)
         col_m1.metric(f"Sản lượng {s_comm}", f"{get_m('Sản lượng'):,.1f} tấn")
         col_m2.metric(f"Diện tích {s_comm}", f"{get_m('Diện tích'):,.1f} ha")
         col_m3.metric(f"Năng suất {s_comm}", f"{get_m('Năng suất'):,.2f}")
 
-        # 2. Charts Row (Comparing all Commodities for the selected location)
+        # 2. Charts Row
         st.subheader(f"Cơ cấu nông nghiệp tại {s_reg} ({s_yr})")
         chart_attr = st.selectbox("Chọn chỉ số so sánh biểu đồ:", sorted(
             df['Attribute'].unique()), key="q_chart_attr")
 
-        plot_df_q = df[(df['Province'] == s_reg) & (
-            df['Year'] == s_yr) & (df['Attribute'] == chart_attr)]
+        plot_df_q = df[
+            (df['Province'] == s_reg) &
+            (df['Year'] == s_yr) &
+            (df['Attribute'] == chart_attr) &
+            (df['Level'] == s_lev_val)
+        ]
 
-        chart_col1, chart_col2 = st.columns(2)
-        with chart_col1:
-            fig_bar = px.bar(plot_df_q, x='Commodity', y='Value', color='Commodity', text_auto='.2s',
-                             title=f"Phân bố {chart_attr} theo loại cây trồng")
-            st.plotly_chart(fig_bar, use_container_width=True)
-        with chart_col2:
-            fig_pie = px.pie(plot_df_q, values='Value', names='Commodity', hole=0.4,
-                             title=f"Tỷ trọng {chart_attr}")
-            st.plotly_chart(fig_pie, use_container_width=True)
+        # Safety check
+        plot_df_q = plot_df_q.groupby('Commodity')['Value'].sum().reset_index()
+
+        if plot_df_q.empty:
+            st.warning("Không có dữ liệu cho lựa chọn này.")
+        else:
+            chart_col1, chart_col2 = st.columns(2)
+            with chart_col1:
+                fig_bar = px.bar(
+                    plot_df_q, x='Commodity', y='Value', color='Commodity',
+                    text_auto=',.1f',
+                    title=f"Phân bố {chart_attr}"
+                )
+                # Đưa con số ra ngoài cột cho dễ nhìn
+                fig_bar.update_traces(textposition='outside')
+                st.plotly_chart(fig_bar, use_container_width=True)
+
+            with chart_col2:
+                fig_pie = px.pie(
+                    plot_df_q, values='Value', names='Commodity', hole=0.4,
+                    title=f"Tỷ trọng {chart_attr}"
+                )
+                st.plotly_chart(fig_pie, use_container_width=True)
 
     with tab2:
         st.header("Xu hướng & So sánh đa chiều")
