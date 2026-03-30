@@ -12,7 +12,7 @@ st.set_page_config(page_title="AgriData Vietnam", layout="wide")
 st.sidebar.title("Menu Điều Hướng")
 page = st.sidebar.radio(
     "Chọn chức năng:",
-    ["Trang chủ", "Phân tích nông nghiệp", "Phân tích địa lý", 
+    ["Trang chủ", "Phân tích nông nghiệp", "Phân tích địa lý",
      "Phân tích khí hậu", "Phân tích thổ nhưỡng", "Dự đoán"]
 )
 
@@ -20,7 +20,7 @@ page = st.sidebar.radio(
 if page == "Trang chủ":
     show_homepage()
 elif page == "Phân tích nông nghiệp":
-    show_agriculture_page() 
+    show_agriculture_page()
 elif page == 'Phân tích địa lý':
     show_geography_page()
 elif page == 'Phân tích khí hậu':

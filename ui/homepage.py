@@ -1,8 +1,9 @@
 import streamlit as st
 
+
 def show_homepage():
     st.title("🌾 Dashboard nông nghiệp Việt Nam")
-    
+
     st.markdown("""
     ### Dashboard phân tích dữ liệu nông nghiệp Việt Nam (2008-2023)
     Hệ thống phân tích dữ liệu của **63 tỉnh thành**, bao gồm **8 loại nông sản**:
